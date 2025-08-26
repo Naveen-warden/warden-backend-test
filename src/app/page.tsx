@@ -60,7 +60,7 @@ export default function PropertyWeatherUI(): JSX.Element {
     const fetchProperties = async () => {
         const controller = new AbortController();
         const { data } = await axios.get(
-            "http://localhost:5000/get-properties",
+            "https://warden-backend-test.onrender.com/get-properties",
             {
                 params,
                 signal: controller.signal,
