@@ -6,7 +6,7 @@ exports.stopWeatherCron = stopWeatherCron;
 exports.getWeatherCronStatus = getWeatherCronStatus;
 const client_1 = require("@prisma/client");
 const cron_1 = require("cron");
-const CRON_SCHEDULE = process.env.WEATHER_CRON_SCHEDULE || "0 */1 * * * *";
+const CRON_SCHEDULE = process.env.WEATHER_CRON_SCHEDULE || "0 */45 * * * *";
 var PWConstents;
 (function (PWConstents) {
     PWConstents[PWConstents["TTL_MINUTES"] = 45] = "TTL_MINUTES";

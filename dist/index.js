@@ -9,7 +9,25 @@ const getProperties_1 = require("./use-cases/getProperties");
 const cors_1 = __importDefault(require("cors"));
 const weather_services_1 = require("./corns/weather-services");
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({ origin: "http://localhost:3000" })); // your Next dev URL
+const ALLOW = new Set([
+    "https://warden-backend-test.vercel.app",
+    "http://localhost:3000",
+]);
+app.use((_req, res, next) => {
+    res.header("Vary", "Origin");
+    next();
+});
+app.use((0, cors_1.default)({
+    origin: (origin, cb) => {
+        if (!origin)
+            return cb(null, true); // non-browser clients
+        cb(null, ALLOW.has(origin)); // reflect only if allowed
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false, // true only if you use cookies
+}));
+app.options("*", (0, cors_1.default)()); // preflight
 console.log("env", process.env.PORT);
 const port = process.env.PORT || 5000;
 (0, weather_services_1.startWeatherCron)();
@@ -34,7 +52,7 @@ process.on("SIGTERM", () => {
     process.exit(0);
 });
 process.on("SIGINT", () => {
-    console.log("🛑 Shutting down gracefully...");
+    console.log("🛑 Shutting down badly...");
     (0, weather_services_1.stopWeatherCron)();
     process.exit(0);
 });

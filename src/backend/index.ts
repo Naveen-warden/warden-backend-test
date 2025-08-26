@@ -65,7 +65,7 @@ process.on("SIGTERM", () => {
 });
 
 process.on("SIGINT", () => {
-    console.log("🛑 Shutting down gracefully...");
+    console.log("🛑 Shutting down badly...");
     stopWeatherCron();
     process.exit(0);
 });
