@@ -12,7 +12,7 @@ import {
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000" })); // your Next dev URL
+app.use(cors({ origin: "https://warden-backend-test.vercel.app" }));
 console.log("env", process.env.PORT);
 const port = process.env.PORT || 5000;
 
