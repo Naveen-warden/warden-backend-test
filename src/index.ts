@@ -12,7 +12,30 @@ import {
 
 const app = express();
 
-app.use(cors({ origin: "https://warden-backend-test.vercel.app" }));
+const ALLOW = new Set([
+    "https://warden-backend-test.vercel.app",
+    "http://localhost:3000",
+]);
+
+app.use((_req, res, next) => {
+    res.header("Vary", "Origin");
+    next();
+});
+
+app.use(
+    cors({
+        origin: (origin, cb) => {
+            if (!origin) return cb(null, true); // non-browser clients
+            cb(null, ALLOW.has(origin)); // reflect only if allowed
+        },
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: false, // true only if you use cookies
+    }),
+);
+
+app.options("*", cors()); // preflight
+
 console.log("env", process.env.PORT);
 const port = process.env.PORT || 5000;
 
