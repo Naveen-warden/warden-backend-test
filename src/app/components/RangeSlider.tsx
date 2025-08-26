@@ -25,23 +25,15 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
 }) => {
     const [minVal, maxVal] = value;
 
-    const setMinVal = useCallback(
-        (v: number) => onChange([Math.max(min, Math.min(v, maxVal)), maxVal]),
-        [min, maxVal, onChange],
-    );
-    const setMaxVal = useCallback(
-        (v: number) => onChange([minVal, Math.min(max, Math.max(v, minVal))]),
-        [minVal, max, onChange],
-    );
-
     const onMinInput = (val: string) => {
         const v = val ? Number(val) : 0;
-        setMinVal(v);
+        onChange([v, maxVal]);
     };
 
     const onMaxInput = (val: string) => {
         const v = val ? Number(val) : 0;
-        setMaxVal(v);
+
+        onChange([minVal, v]);
     };
     return (
         <div className="space-y-3">
