@@ -134,9 +134,9 @@ export default function PropertyWeatherUI(): JSX.Element {
                                 <Search className="w-5 h-5" />
                                 Filters
                             </h2>
-
+                            {/*
+              
                             <div className="flex items-center gap-2">
-                                {/* View toggle */}
                                 <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
                                     <label
                                         className={`px-3 py-2 text-sm cursor-pointer flex items-center gap-2 ${values.view === "grid" ? "bg-gray-50" : ""}`}
@@ -171,6 +171,7 @@ export default function PropertyWeatherUI(): JSX.Element {
                                     Reset
                                 </button>
                             </div>
+                           */}
                         </div>
 
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -271,7 +272,7 @@ export default function PropertyWeatherUI(): JSX.Element {
                                     </>
                                 )}
                             </span>
-
+                            {/*
                             <div className="flex items-center gap-2 text-sm">
                                 <ArrowUpDown className="w-4 h-4 text-gray-500" />
                                 <select
@@ -297,6 +298,7 @@ export default function PropertyWeatherUI(): JSX.Element {
                                     <option value="desc">Desc</option>
                                 </select>
                             </div>
+            */}
                         </div>
                     </div>
                 </form>
