@@ -55,7 +55,7 @@ app.post("/api/weather-cron/start", (req, res) => {
 app.get("/", (_req, res) => res.send("Warden Weather Test: OK"));
 app.use(`/get-properties`, getProperties);
 
-app.listen(port, () => console.log(`Server on http://localhost:${port}`));
+// app.listen(port, () => console.log(`Server on http://localhost:${port}`));
 
 // Graceful shutdown
 process.on("SIGTERM", () => {
@@ -69,3 +69,5 @@ process.on("SIGINT", () => {
     stopWeatherCron();
     process.exit(0);
 });
+
+module.exports = app;
