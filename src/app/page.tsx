@@ -20,6 +20,9 @@ import type { PropertyWithWeather, FiltersForm } from "./types";
 import { WMO_CODES } from "./components/Wmo";
 import { useQuery } from "@tanstack/react-query";
 
+// const FETCH_URL= 'https://warden-backend-test.onrender.com/get-properties'
+const FETCH_URL = "/api/get-properties";
+
 // Code-split heavy views + slider
 const PropertiesGrid = dynamic(() => import("./components/PropertyGrid"), {
     loading: () => <div className="text-sm text-gray-500">Loading grid…</div>,
@@ -59,13 +62,10 @@ export default function PropertyWeatherUI(): JSX.Element {
 
     const fetchProperties = async () => {
         const controller = new AbortController();
-        const { data } = await axios.get(
-            "https://warden-backend-test.onrender.com/get-properties",
-            {
-                params,
-                signal: controller.signal,
-            },
-        );
+        const { data } = await axios.get(FETCH_URL, {
+            params,
+            signal: controller.signal,
+        });
         return data;
     };
     const {
