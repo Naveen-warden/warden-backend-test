@@ -28,7 +28,7 @@
     "prisma",
     "src",
     ".next/types/**/*.ts"
-  ],
+, "index.ts"  ],
   "exclude": [
     "node_modules"
   ]
