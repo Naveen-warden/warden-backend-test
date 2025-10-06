@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { promises } from "dns";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { makeRange, toNum } from "../../../backend/use-cases/helpers";
 import { prisma } from "../../../backend/database/prisma";
 
@@ -10,7 +10,7 @@ export type Weather = {
     code: number | null;
 };
 
-export function buildPropertyWhere(req: NextRequest) {
+function buildPropertyWhere(req: NextRequest) {
     const and: Prisma.PropertyWhereInput[] = [];
 
     const searchParams = req.nextUrl.searchParams;
@@ -67,13 +67,13 @@ export async function GET(req: NextRequest) {
             include: { weatherSnapshot: true },
         });
 
-        return new Response(JSON.stringify(properties), {
+        return new NextResponse(JSON.stringify(properties), {
             headers: { "Content-Type": "application/json" },
         });
     } catch (error) {
         console.error("Error fetching properties:", error);
 
-        return new Response(
+        return new NextResponse(
             JSON.stringify({ error: "Internal Server Error" }),
             {
                 status: 500,
