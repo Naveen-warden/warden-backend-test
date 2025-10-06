@@ -2,7 +2,7 @@
 
 Welcome! This is an evaluation project for Warden.
 
-You are provided with a slice of the Warden backend codebase. At present, it contains only one API endpoint, `/get-properties`, which returns the first 20 properties and supports basic text search.
+You are provided with a slice of the Warden backend codebase. At present, it contains only one  API endpoint, `/get-properties`, which returns the first 20 properties and supports basic text search.
 
 In the file `.env.example` you are given readonly credentials of a live hosted database. This db is already populated with properties data on which this API operates.
 
