@@ -5,13 +5,13 @@
     "scripts": {
         "dev:server": "ts-node-dev --respawn --transpile-only src/backend/index.ts",
         "dev:frontend": "next dev",
-        "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+        "dev": "next dev",
         "build:frontend": "next build",
         "build:backend": "tsc -p tsconfig.server.json",
-        "build": "npm run build:frontend && npm run build:backend",
+        "build": "npm run prisma:gen && npm run build:frontend && npm run build:backend",
         "start:server": "node  dist/index.js",
         "start:frontend": "next start",
-        "start": "concurrently \"npm run start:server\" \"npm run start:frontend\"",
+        "start": "next start",
         "prisma:gen": "prisma generate",
         "db:seed": "ts-node prisma/seed.ts"
     },
