@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 
-import { getProperties } from "../src/backend/use-cases/getProperties";
+import { getProperties } from "../backend/use-cases/getProperties";
 import { CronJob } from "cron";
 // import cors from "cors";
 // import {

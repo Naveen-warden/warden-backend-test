@@ -8,7 +8,7 @@
         "dev": "next dev",
         "build:frontend": "next build",
         "build:backend": "tsc -p tsconfig.server.json",
-        "build": "npm run prisma:gen && npm run build:frontend && npm run build:backend",
+        "build": "npm run prisma:gen && next build",
         "start:server": "node  dist/index.js",
         "start:frontend": "next start",
         "start": "next start",
